@@ -4,12 +4,12 @@ extension Droplet {
     func setupRoutes() throws {
         get("hello") { req in
             var json = JSON()
-            try json.set("hello", "world")
+            try json.set("Recompte", "Popular")
             return json
         }
 
         get("plaintext") { req in
-            return "Hello, world!"
+            return "Recompte popular!"
         }
 
         // response to requests to /info domain
