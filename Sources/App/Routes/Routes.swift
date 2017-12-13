@@ -2,6 +2,9 @@ import Vapor
 
 extension Droplet {
     func setupRoutes() throws {
+		
+		let mysqlDriver = try self.mysql()
+		
         get("hello") { req in
             var json = JSON()
             try json.set("RRecompte", "Popular")
@@ -9,7 +12,15 @@ extension Droplet {
         }
 
         get("plaintext") { req in
-            return "Recompte popular!"
+			
+			guard let xarxa = try Xarxa.find(1) else {
+				throw Abort.notFound
+			}
+			
+			let email = xarxa.trustedEmail
+			print(email) // the name of the dog with id 42
+			//let result = try mysqlDriver.raw("SELECT @@version")
+            return "Recompte popular! \(email)"
         }
 
         // response to requests to /info domain
