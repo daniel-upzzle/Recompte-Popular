@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias Id = Int
+typealias Id = String
 typealias Email = String
 
 struct User: Codable{
@@ -16,6 +16,4 @@ struct User: Codable{
 	let email :Email
 }
 
-func getCurrentUser() -> User? {
-	return User.find(id: 1)
-}
+

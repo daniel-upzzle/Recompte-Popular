@@ -128,6 +128,24 @@
         }
       },
       {
+        "package": "JWT",
+        "repositoryURL": "https://github.com/vapor/jwt.git",
+        "state": {
+          "branch": null,
+          "revision": "84f4cabfa702208bddfd93cd76df88df9e6ef4ef",
+          "version": "2.3.0"
+        }
+      },
+      {
+        "package": "JWTProvider",
+        "repositoryURL": "https://github.com/vapor/jwt-provider.git",
+        "state": {
+          "branch": null,
+          "revision": "f648dd6814970d9c7b27b79e9ce62699561d8d14",
+          "version": "1.3.0"
+        }
+      },
+      {
         "package": "Multipart",
         "repositoryURL": "https://github.com/vapor/multipart.git",
         "state": {

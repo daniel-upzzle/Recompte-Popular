@@ -13,9 +13,10 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent-provider.git", .upToNextMajor(from: "1.2.0")),
 		.package(url: "https://github.com/vapor/mysql-provider.git", .upToNextMajor(from: "2.0.0")),
 		.package(url: "https://github.com/vapor/auth-provider.git", .upToNextMajor(from: "1.0.0")),
+		.package(url: "https://github.com/vapor/jwt-provider.git", .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
-        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "MySQLProvider", "AuthProvider"],
+        .target(name: "App", dependencies: ["Vapor", "FluentProvider", "MySQLProvider", "AuthProvider", "JWTProvider" ],
                 exclude: [
                     "Config",
                     "Public",

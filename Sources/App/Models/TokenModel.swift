@@ -9,6 +9,7 @@ import Vapor
 import FluentProvider
 
 final class TokenModel: Model {
+	
 	let token: String
 	let userId: Identifier
 	

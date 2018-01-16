@@ -32,7 +32,9 @@
     "middleware": [
         "error",
         "date",
-        "file"
+        "file",
+		"version",
+		"flowney-errors",
     ],
 
     "//": "Choose which commands this application can run",

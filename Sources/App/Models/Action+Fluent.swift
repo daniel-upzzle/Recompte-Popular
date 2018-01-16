@@ -8,6 +8,8 @@
 import Vapor
 import FluentProvider
 
+extension Action : ResponseRepresentable { }
+
 
 extension Action {
 	
@@ -42,7 +44,7 @@ extension Action {
 		
 	}
 	
-	static func list(user :Int) -> [Action] {
+	static func list(user :Id) -> [Action] {
 		
 		do{
 
@@ -57,7 +59,7 @@ extension Action {
 			
 			
 		} catch {
-			print("Error info: \(error)")
+			print("Fluent Query Error info: \(error)")
 		}
 		
 		return []
@@ -71,10 +73,6 @@ final class ActionModel :Model{
 	
 	var data :Action
 	
-	/*let description :[String:Any] = [
-		"concept": \Action.concept,
-		"amount": \Action.amount,
-		]*/
 	
 	/// The column names for `id` and `content` in the database
 	struct Keys {
@@ -96,8 +94,8 @@ final class ActionModel :Model{
 
 	init(row: Row) throws {
 		
-		let sender_id :Int = try row.get(Keys.sender)
-		let receiver_id :Int = try row.get(Keys.receiver)
+		let sender_id :String = try row.get(Keys.sender)
+		let receiver_id :String = try row.get(Keys.receiver)
 		let date :Date = try row.get(Keys.date)
 		let concept :String = try row.get(Keys.concept)
 		let amount :Float = try row.get(Keys.amount)
@@ -123,12 +121,12 @@ final class ActionModel :Model{
 		
 		var row = Row()
 		
-		try row.set("sender", data.sender.id)
-		try row.set("receiver", data.receiver.id)
-		try row.set("date", data.date)
-		try row.set("concept", data.concept)
-		try row.set("amount", data.amount)
-		try row.set("status", data.status.rawValue)
+		try row.set(Keys.sender, data.sender.id)
+		try row.set(Keys.receiver, data.receiver.id)
+		try row.set(Keys.date, data.date)
+		try row.set(Keys.concept, data.concept)
+		try row.set(Keys.amount, data.amount)
+		try row.set(Keys.status, data.status.rawValue)
 		
 		return row
 	}
@@ -138,15 +136,14 @@ final class ActionModel :Model{
 extension ActionModel: Preparation {
 	
 	static func prepare(_ database: Database) throws {
-		print("preparing action model")
 		try database.create(self) { builder in
 			builder.id()
-			builder.string("concept")
-			builder.float("amount")
-			builder.int("sender")
-			builder.int("receiver")
-			builder.date("date")
-			builder.string("status")
+			builder.string(Keys.concept)
+			builder.float(Keys.amount)
+			builder.string(Keys.sender)
+			builder.string(Keys.receiver)
+			builder.date(Keys.date)
+			builder.string(Keys.status)
 		}
 	}
 	
