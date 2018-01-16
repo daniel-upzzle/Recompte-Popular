@@ -16,14 +16,14 @@ extension User{
 	
 	func receive(_ amount :Float, from sender :User, concept :String) -> Action {
 		
-		return Action(sender: sender, receiver: self, date: Date(), concept: concept, amount: amount, status: .CreatedByReceiver)
+		return Action(id: nil, sender: sender, receiver: self, date: Date(), concept: concept, amount: amount, status: .CreatedByReceiver)
 		
 	}
 	
 	
 	func send(_ amount :Float, to receiver :User, concept :String) -> Action {
 		
-		return Action(sender: self, receiver: receiver, date: Date(), concept: concept, amount: amount, status: .CreatedBySender)
+		return Action(id: nil, sender: self, receiver: receiver, date: Date(), concept: concept, amount: amount, status: .CreatedBySender)
 		
 	}
 	

@@ -94,6 +94,7 @@ final class ActionModel :Model{
 
 	init(row: Row) throws {
 		
+		let id :Int = try row.get(Keys.id)
 		let sender_id :String = try row.get(Keys.sender)
 		let receiver_id :String = try row.get(Keys.receiver)
 		let date :Date = try row.get(Keys.date)
@@ -108,6 +109,7 @@ final class ActionModel :Model{
 		}
 		
 		data = Action(
+			id: id,
 			sender: sender,
 			receiver: receiver,
 			date: date,

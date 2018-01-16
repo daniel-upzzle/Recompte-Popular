@@ -26,6 +26,7 @@ struct Action: Codable{
 		case Unknown
 	}
 	
+	let id: Int?
 	let sender: User
 	let receiver: User
 	let date: Date
@@ -39,7 +40,9 @@ struct Action: Codable{
 		return counterPart != nil
 	}
 	
-	
+	var isSaved: Bool{
+		return id != nil
+	}
 }
 
 
